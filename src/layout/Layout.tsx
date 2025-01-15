@@ -1,19 +1,17 @@
 import { SidebarProvider } from '@/components/ui/sidebar.tsx';
 import React from 'react';
-import { useIsMobile } from '@/hooks/use-mobile.tsx';
 import NavigationBar from '@/layout/components/NavigationBar.tsx';
 import DefaultSidebar from '@/layout/components/DefaultSidebar.tsx';
+import styles from './Layout.module.scss';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const isMobile = useIsMobile();
-
   return (
-    <SidebarProvider open={!isMobile}>
+    <SidebarProvider>
       <DefaultSidebar />
 
-      <main>
+      <main className={styles.wrapper}>
         <NavigationBar />
-        {children}
+        <div className={styles.children}>{children}</div>
       </main>
     </SidebarProvider>
   );

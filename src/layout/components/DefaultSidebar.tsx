@@ -8,7 +8,7 @@ import SidebarLink from '@/layout/components/SidebarLink.tsx';
 
 export default function DefaultSidebar() {
   return (
-    <Sidebar side="right" className="opacity-100">
+    <Sidebar className="opacity-100">
       <SidebarContent>
         <SidebarGroup>
           <SidebarLink path="/" name="Home" />
