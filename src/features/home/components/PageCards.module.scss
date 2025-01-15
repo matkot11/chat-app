@@ -1,0 +1,9 @@
+.scroll {
+  margin: 24px 0;
+  width: max-content;
+  display: flex;
+
+  @media (min-width: 1200px) {
+    margin: 40px 0;
+  }
+}
