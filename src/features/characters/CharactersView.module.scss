@@ -1,0 +1,21 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.pagination {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.paginationPreviousLink {
+  margin-right: auto
+}
+
+.paginationNextLink {
+  margin-left: auto
+}

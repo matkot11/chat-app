@@ -12,7 +12,7 @@ export default function DefaultSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarLink path="/" name="Home" />
-          <SidebarLink path="/characters" name="Characters" />
+          <SidebarLink path="/characters/1" name="Characters" />
           <SidebarLink path="/chat" name="Chat" />
         </SidebarGroup>
       </SidebarContent>

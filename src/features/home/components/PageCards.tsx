@@ -12,7 +12,7 @@ export default function PageCards() {
     {
       title: 'Characters',
       description: 'Checkout all Rick and Morty characters',
-      path: '/characters',
+      path: '/characters/1',
     },
     {
       title: 'Authenticate',
