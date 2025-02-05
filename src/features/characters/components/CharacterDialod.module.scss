@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media only screen and (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.image {
+  margin-top: 20px;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  align-self: center;
+}
+
+.about {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: start;
+}
+
+.name {
+  margin-bottom: 20px;
+  align-self: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
