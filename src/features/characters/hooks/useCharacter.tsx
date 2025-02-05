@@ -1,27 +1,28 @@
 import axios, { isAxiosError } from 'axios';
 import { useState } from 'react';
-import { Characters } from '@/typings/characters.ts';
+import { Character } from '@/typings/characters.ts';
 import { useToast } from '@/hooks/use-toast.ts';
 
-type UseCharactersReturn = {
-  characters: Characters | null;
+type UseCharacterReturn = {
+  character: Character | null;
   loading: boolean;
-  getCharacters: (page?: number) => void;
+  getCharacter: (id: string) => void;
 };
 
-export const useCharacters = (): UseCharactersReturn => {
-  const [characters, setCharacters] = useState(null);
+export const useCharacter = (): UseCharacterReturn => {
+  const [character, setCharacter] = useState(null);
   const [loading, setLoading] = useState(false);
+
   const { toast } = useToast();
 
-  const getCharacters = async (page = 1) => {
+  const getCharacter = async (id: string) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://rickandmortyapi.com/api/character/?page=${page}`
+        `https://rickandmortyapi.com/api/character/${id}`
       );
 
-      setCharacters(response.data);
+      setCharacter(response.data);
     } catch (error: unknown) {
       if (isAxiosError(error)) {
         toast({
@@ -33,12 +34,12 @@ export const useCharacters = (): UseCharactersReturn => {
 
       toast({
         title: 'An error occurred',
-        description: 'An error occurred while fetching characters',
+        description: 'An error occurred while fetching the character',
       });
     } finally {
       setLoading(false);
     }
   };
 
-  return { characters, loading, getCharacters };
+  return { character, loading, getCharacter };
 };
