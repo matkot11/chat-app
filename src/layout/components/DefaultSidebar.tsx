@@ -1,7 +1,6 @@
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
 } from '@/components/ui/sidebar.tsx';
 import SidebarLink from '@/layout/components/SidebarLink.tsx';
@@ -14,15 +13,9 @@ export default function DefaultSidebar() {
           <SidebarLink path="/" name="Home" />
           <SidebarLink path="/characters/1" name="Characters" />
           <SidebarLink path="/chat" name="Chat" />
+          <SidebarLink path="/auth" name="Authenticate" />
         </SidebarGroup>
       </SidebarContent>
-
-      <SidebarFooter>
-        <SidebarGroup>
-          <SidebarLink path="/sign-in" name="Sign In" />
-          <SidebarLink path="/sign-up" name="Sign Up" />
-        </SidebarGroup>
-      </SidebarFooter>
     </Sidebar>
   );
 }
