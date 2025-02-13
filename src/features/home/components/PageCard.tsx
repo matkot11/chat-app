@@ -5,12 +5,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card.tsx';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { Button, buttonVariants } from '@/components/ui/button.tsx';
 import { MoveRight } from 'lucide-react';
 import styles from './PageCard.module.scss';
-import { supabase } from '@/supabase';
-import { useToast } from '@/hooks/use-toast.ts';
+import { useSignOut } from '@/features/auth/hooks/useSignOut.ts';
 
 export default function PageCard({
   title,
@@ -23,23 +22,8 @@ export default function PageCard({
   path?: string;
   authenticated?: boolean;
 }) {
-  const { toast } = useToast();
-  const navigate = useNavigate();
+  const { signOut } = useSignOut();
 
-  const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-      toast({
-        title: error.name,
-        description: error.message,
-      });
-
-      return;
-    }
-
-    navigate(0);
-  };
   return (
     <Card className={styles.wrapper}>
       <CardHeader>
