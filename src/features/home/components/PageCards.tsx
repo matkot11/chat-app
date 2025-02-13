@@ -2,7 +2,7 @@ import styles from './PageCards.module.scss';
 import PageCard from '@/features/home/components/PageCard.tsx';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area.tsx';
 import { useEffect, useState } from 'react';
-import { supabase } from '@/supabase';
+import { useGetUser } from '@/features/auth/hooks/useGetUser.ts';
 
 type CardsData = {
   title: string;
@@ -32,19 +32,15 @@ export default function PageCards() {
     },
   ];
 
-  const [isLoading, setLoading] = useState(true);
   const [cards, setCards] = useState<CardsData[]>(CARDS_DATA_UNAUTHENTICATED);
+  const { user, userLoading } = useGetUser();
 
-  const getUser = async () => {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+  useEffect(() => {
+    if (!user) return;
 
     const cardsDataAuthenticated = CARDS_DATA_UNAUTHENTICATED.filter(
       ({ title }) => title !== UNAUTHENTICATED_TITLE
     );
-
-    if (!user) return;
 
     setCards([
       ...cardsDataAuthenticated,
@@ -54,20 +50,12 @@ export default function PageCards() {
         authenticated: true,
       },
     ]);
-  };
-
-  useEffect(() => {
-    try {
-      getUser();
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  }, [user]);
 
   return (
     <ScrollArea>
       <div className={styles.scroll}>
-        {isLoading ? (
+        {userLoading ? (
           <span>Loading...</span>
         ) : (
           cards.map(({ title, description, path, authenticated }, index) => (
