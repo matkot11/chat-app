@@ -4,10 +4,12 @@ import {
   DialogContent,
   DialogFooter,
   DialogHeader,
+  DialogTitle,
 } from '@/components/ui/dialog.tsx';
 import { DialogDescription } from '@radix-ui/react-dialog';
-import { Button } from '@/components/ui/button.tsx';
+import { buttonVariants } from '@/components/ui/button.tsx';
 import styles from './CharacterDialod.module.scss';
+import { Link } from 'react-router';
 
 export default function CharacterDialog({ id }: { id: string }) {
   const { getCharacter, character } = useCharacter();
@@ -22,6 +24,8 @@ export default function CharacterDialog({ id }: { id: string }) {
   return (
     <DialogContent>
       <DialogHeader>
+        <DialogTitle>{character.name}</DialogTitle>
+
         <DialogDescription className={styles.wrapper}>
           <img
             src={character.image}
@@ -29,8 +33,6 @@ export default function CharacterDialog({ id }: { id: string }) {
             className={styles.image}
           />
           <div className={styles.about}>
-            <span className={styles.name}>{character.name}</span>
-
             <span>gender: {character.gender}</span>
             <span>species: {character.species}</span>
             <span>location: {character.location.name}</span>
@@ -40,7 +42,12 @@ export default function CharacterDialog({ id }: { id: string }) {
 
       <DialogFooter>
         {character.status === 'Alive' ? (
-          <Button>Text me!</Button>
+          <Link
+            className={buttonVariants({ className: styles.link })}
+            to="/chat"
+          >
+            Text me!
+          </Link>
         ) : (
           <span>I am not alive, texting me is pointless...</span>
         )}

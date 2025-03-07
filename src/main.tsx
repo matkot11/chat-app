@@ -5,6 +5,7 @@ import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import CharactersView from '@/features/characters/CharactersView.tsx';
 import AuthView from '@/features/auth/AuthView.tsx';
+import ChatView from '@/features/chat/ChatView.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<HomeView />} />
         <Route path="/characters/:page" element={<CharactersView />} />
+        <Route path="/chat" element={<ChatView />} />
         <Route path="/auth" element={<AuthView />} />
       </Routes>
     </BrowserRouter>
