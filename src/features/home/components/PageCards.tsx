@@ -3,6 +3,7 @@ import PageCard from '@/features/home/components/PageCard.tsx';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area.tsx';
 import { useEffect, useState } from 'react';
 import { useGetUser } from '@/features/auth/hooks/useGetUser.ts';
+import { LoaderCircle } from 'lucide-react';
 
 type CardsData = {
   title: string;
@@ -56,7 +57,7 @@ export default function PageCards() {
     <ScrollArea>
       <div className={styles.scroll}>
         {userLoading ? (
-          <span>Loading...</span>
+          <LoaderCircle />
         ) : (
           cards.map(({ title, description, path, authenticated }, index) => (
             <PageCard

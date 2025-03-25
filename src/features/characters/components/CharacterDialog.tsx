@@ -10,6 +10,7 @@ import { DialogDescription } from '@radix-ui/react-dialog';
 import { buttonVariants } from '@/components/ui/button.tsx';
 import styles from './CharacterDialod.module.scss';
 import { Link } from 'react-router';
+import { LoaderCircle } from 'lucide-react';
 
 export default function CharacterDialog({ id }: { id: string }) {
   const { getCharacter, character } = useCharacter();
@@ -19,7 +20,7 @@ export default function CharacterDialog({ id }: { id: string }) {
     getCharacter(id);
   }, []);
 
-  if (!character) return <span>loading</span>;
+  if (!character) return <LoaderCircle />;
 
   return (
     <DialogContent>

@@ -64,7 +64,7 @@ export const useMessages = () => {
 
         return;
       }
-      console.log('pupa', data.messages);
+
       setChat(data);
     }, 2000);
   };

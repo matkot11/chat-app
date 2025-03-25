@@ -18,6 +18,7 @@ import { useToast } from '@/hooks/use-toast.ts';
 import { Tables } from '@/supabase/typings.ts';
 import { Button } from '@/components/ui/button.tsx';
 import { formatDate } from '@/features/chat/utils/formatDate.ts';
+import { LoaderCircle } from 'lucide-react';
 
 export default function ChatView() {
   const { user } = useGetUser();
@@ -53,7 +54,7 @@ export default function ChatView() {
     setCorrespondentId(id);
   };
 
-  if (!user && chat) {
+  if (!user) {
     return (
       <Layout>
         <UnauthenticatedUserInfo />
@@ -112,7 +113,7 @@ export default function ChatView() {
             ) : (
               <TableRow>
                 <TableCell colSpan={4} className={styles.loading}>
-                  Loading...
+                  <LoaderCircle />
                 </TableCell>
               </TableRow>
             )}
