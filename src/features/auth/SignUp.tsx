@@ -73,9 +73,11 @@ export default function SignUp() {
 
       <CardContent>
         <form
-          action={async (formData) =>
-            await signUp(Object.fromEntries(formData) as SignUpFormData)
-          }
+          onSubmit={async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            await signUp(Object.fromEntries(formData) as SignUpFormData);
+          }}
         >
           <Label htmlFor="email">Email</Label>
           <Input
