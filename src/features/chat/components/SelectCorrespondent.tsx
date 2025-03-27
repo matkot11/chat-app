@@ -60,7 +60,6 @@ export default function SelectCorrespondent({
               {characters?.results.map(({ name, id }) => (
                 <CommandItem
                   key={id}
-                  value={id}
                   onSelect={() => onCorrespondentSelect(id, name)}
                 >
                   {name}
