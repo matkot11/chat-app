@@ -48,7 +48,9 @@ export default function ChatDialog({
             <span>{character?.name}</span>
           </DialogTitle>
           <DialogDescription>
-            Last message sent {formatDate(chat.updated_at)}
+            {!!chat.messages.length
+              ? `Last message sent ${formatDate(chat.updated_at)}`
+              : 'Send you first message!'}
           </DialogDescription>
         </DialogHeader>
         <div>
